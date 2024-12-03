@@ -3,24 +3,31 @@ version: "3.8"
 services:
   backend:
     build:
-      context: .
-      dockerfile: backend/Dockerfile
+      context: ./backend
+      dockerfile: Dockerfile
     ports:
       - "5001:5000"
     depends_on:
       - database
 
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5030:5030"
+
   messaging:
     build:
-      context: .
-      dockerfile: messaging/Dockerfile
+      context: ./messaging
+      dockerfile: Dockerfile
     ports:
       - "6000:6000"
 
   auth:
     build:
-      context: .
-      dockerfile: auth/Dockerfile
+      context: ./auth
+      dockerfile: Dockerfile
     ports:
       - "4000:4000"
     depends_on:
@@ -28,8 +35,8 @@ services:
 
   database:
     build:
-      context: .
-      dockerfile: database/Dockerfile
+      context: ./database
+      dockerfile: Dockerfile
     ports:
       - "5432:5432"
     environment:

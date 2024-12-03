@@ -1,8 +1,8 @@
 FROM python:3.9-slim
-WORKDIR /app
+WORKDIR auth
 
 # Copy shared files from the root
-COPY ../pyproject.toml ../poetry.lock ./  
+COPY ../pyproject.toml ./  
 
 # Install Poetry and dependencies
 RUN pip install poetry && poetry install --no-dev
@@ -11,4 +11,4 @@ RUN pip install poetry && poetry install --no-dev
 COPY . ./
 
 # Run the auth service
-CMD ["poetry", "run", "python", "auth_service.py"]
+CMD ["poetry", "run", "python", "auth_service.py"] 

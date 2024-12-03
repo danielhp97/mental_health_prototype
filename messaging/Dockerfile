@@ -1,8 +1,8 @@
 FROM python:3.9-slim
-WORKDIR /app
+#WORKDIR messaging
 
 # Copy shared files from the root
-COPY ../pyproject.toml ../poetry.lock ./  
+COPY ../pyproject.toml ./  
 
 # Install Poetry and dependencies
 RUN pip install poetry && poetry install --no-dev
